@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday  ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+    overflow-x:hidden;
+    color:white;
+}
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+/* Floating Hearts */
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:white;
+    animation:floatUp 6s linear infinite;
+    opacity:0.7;
+    pointer-events:none;
+    z-index:1;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+/* Container */
+
+.container{
+
+    position:relative;
+    z-index:2;
+
+    width:90%;
+    max-width:1100px;
+
+    margin:auto;
+    padding:40px 0;
+}
+
+/* Hero Section */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+}
+
+.hero h1{
+
+    font-size:5rem;
+
+    text-shadow:
+    0 0 10px rgba(255,255,255,0.8),
+    0 0 20px rgba(255,105,180,0.8),
+    0 0 40px rgba(255,20,147,0.6);
+
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.03);
+    }
+}
+
+.hero p{
+
+    margin-top:20px;
+
+    font-size:1.3rem;
+
+    max-width:700px;
+
+    line-height:1.8;
+}
+
+/* Cards */
+
+.card{
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    margin:40px 0;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.15);
+
+    transition:0.4s ease;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+}
+
+.card h2{
+
+    margin-bottom:20px;
+    font-size:2.5rem;
+}
+
+.card p{
+
+    font-size:1.15rem;
+
+    line-height:2;
+}
+
+/* Envelope Animation */
+
+.envelope-wrapper{
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    margin-top:40px;
+}
+
+.envelope{
+
+    position:relative;
+
+    width:320px;
+    height:220px;
+
+    background:#ff6f91;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:0.5s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+    overflow:hidden;
+}
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:#ff8fab;
+
+    clip-path:polygon(0 0,50% 50%,100% 0);
+
+    transform-origin:top;
+
+    transition:0.5s;
+}
+
+.letter{
+
+    position:absolute;
+
+    width:90%;
+    height:90%;
+
+    background:white;
+
+    color:#ff4f87;
+
+    left:5%;
+    top:100%;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    transition:0.7s;
+
+    text-align:left;
+}
+
+.envelope.open::before{
+
+    transform:rotateX(180deg);
+}
+
+.envelope.open .letter{
+
+    top:5%;
+}
+
+.tap-text{
+
+    margin-top:20px;
+
+    font-size:1.1rem;
+}
+
+/* Typing Text */
+
+#typing-text{
+
+    font-size:1rem;
+
+    line-height:2;
+
+    white-space:pre-line;
+}
+
+/* Memories */
+
+.memories{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+}
+
+.memory-box{
+
+    background:rgba(255,255,255,0.15);
+
+    padding:25px;
+
+    border-radius:25px;
+
+    transition:0.4s;
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.memory-box:hover{
+
+    transform:scale(1.05);
+}
+
+.meet-preview{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    margin-bottom:15px;
+}
+
+/* Popup */
+
+.popup{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.6);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999999;
+}
+
+.popup-content{
+
+    width:90%;
+    max-width:600px;
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:30px;
+
+    padding:35px;
+
+    color:white;
+
+    text-align:center;
+
+    position:relative;
+
+    animation:popupShow 0.4s ease;
+}
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+        transform:scale(0.7);
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.close{
+
+    position:absolute;
+
+    top:15px;
+    right:20px;
+
+    font-size:35px;
+
+    cursor:pointer;
+}
+
+.memory-image{
+
+    width:100%;
+
+    border-radius:20px;
+
+    margin:20px 0;
+}
+
+button{
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#ff4f87,#ff85a2);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    transform:translateY(-5px) scale(1.05);
+}
+
+.footer{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    font-size:1.2rem;
+}
+
+/* COUNTDOWN SCREEN */
+
+#countdown-screen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999999;
+
+    padding:20px;
+}
+
+.countdown-box{
+
+    background:rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(15px);
+
+    padding:40px 30px;
+
+    border-radius:35px;
+
+    text-align:center;
+
+    color:white;
+
+    width:100%;
+    max-width:650px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,0.2);
+}
+
+.countdown-box h1{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+}
+
+.countdown-box p{
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+}
+
+.countdown{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+    margin-top:35px;
+}
+
+.countdown div{
+
+    background:rgba(255,255,255,0.15);
+
+    padding:25px;
+
+    border-radius:25px;
+}
+
+.countdown span{
+
+    font-size:3rem;
+
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .card h2{
+        font-size:2rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- COUNTDOWN SCREEN -->
+
+<div id="countdown-screen">
+
+    <div class="countdown-box">
+
+        <h1>🎂 Surprise Loading ❤️</h1>
+
+        <p>
+            This special birthday website will unlock on<br>
+            <b>20 May 2026 - 20:17 PM (IST)</b>
+        </p>
+
+        <div class="countdown">
+
+            <div>
+                <span id="days">0</span>
+                <p>Days</p>
+            </div>
+
+            <div>
+                <span id="hours">0</span>
+                <p>Hours</p>
+            </div>
+
+            <div>
+                <span id="minutes">0</span>
+                <p>Minutes</p>
+            </div>
+
+            <div>
+                <span id="seconds">0</span>
+                <p>Seconds</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<div id="main-site" style="display:none;">
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Happy Birthday Pari ❤️</h1>
+
+        <p>
+            A beautiful little world made only for you ✨
+        </p>
+
+        <button onclick="scrollToLetter()">
+            Read My Heart ❤️
+        </button>
+
+    </section>
+
+    <!-- LETTER SECTION -->
+
+    <section class="card">
+
+        <h2>💌 A Letter For You</h2>
+
+        <div class="envelope-wrapper">
+
+            <div class="envelope" onclick="openLetter()">
+
+                <div class="letter">
+
+                    <p id="typing-text"></p>
+
+                </div>
+
+            </div>
+
+            <p class="tap-text">
+                Tap The Envelope ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- MEMORIES -->
+
+    <section class="card">
+
+        <h2>📸 Our Beautiful Memories</h2>
+
+        <div class="memories">
+
+            <div class="memory-box"
+            onclick="openPopup('chatPopup')">
+
+                ✨ First Chat
+
+            </div>
+
+            <div class="memory-box"
+            onclick="openPopup('callPopup')">
+
+                ☎️ First Call
+
+            </div>
+
+            <div class="memory-box"
+            onclick="openPopup('meetPopup')">
+
+                <img
+                src="https://drive.google.com/uc?export=view&id=1i-Xfw8VkMzmcdytPXyQdEhs_qQC9HZ7R"
+                class="meet-preview">
+
+                <p>❤️ First Meet</p>
+
+            </div>
+
+            <div class="memory-box"
+            onclick="openPopup('futurePopup')">
+
+                🌸 Future Goal
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- WHY I LOVE YOU -->
+
+    <section class="card">
+
+        <h2>💖 Why I Love You</h2>
+
+        <p>
+            I love your smile,
+            your kindness,
+            your cute anger,
+            your care,
+            your voice,
+            your laugh,
+            and everything about you ❤️
+        </p>
+
+    </section>
+
+    <!-- FUTURE -->
+
+    <section class="card">
+
+        <h2>🌸 Future Dreams</h2>
+
+        <p>
+            I dream of traveling together,
+            laughing together,
+            growing together,
+            and creating thousands of beautiful memories with you ❤️
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        Made With Endless Love ❤️
+
+    </div>
+
+</div>
+
+<!-- POPUPS -->
+
+<div class="popup" id="chatPopup">
+
+    <div class="popup-content">
+
+        <span class="close"
+        onclick="closePopup('chatPopup')">×</span>
+
+        <h2>✨ First Chat</h2>
+
+        <p>
+            I'm sorry 😅
+            Mere pass hmari first chat toh nhi hai,
+            but I know us time hmara
+            follow unfollow ka scene chal raha tha 🤭
+
+            Aur proposal mai aapne kaha tha:
+
+            “Ab ye dard sambhalna meri zimedari hai ❤️”
+
+            Aur honestly…
+            abhi tak sambhala hua hai sir dard ko 😅💖
+        </p>
+
+    </div>
+
+</div>
+
+<div class="popup" id="callPopup">
+
+    <div class="popup-content">
+
+        <span class="close"
+        onclick="closePopup('callPopup')">×</span>
+
+        <h2>☎️ First Call</h2>
+
+        <p>
+            Once again I'm sorry yrr 😅
+            mere pass iska bhi koi proof nhi hai…
+
+            But I still remember our first call 🤭
+
+            Us time aap coaching se aa rahi thi
+            aur mai terrace per tha ❤️
+
+            Almost
